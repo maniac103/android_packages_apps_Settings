@@ -47,24 +47,7 @@
                 android:paddingLeft="20dip"
                 android:paddingRight="20dip" />
 
-        <!-- Used for the increasing ring volume.  This is what the superclass VolumePreference uses. -->
         <SeekBar android:id="@*android:id/seekbar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="2dip"
-                android:paddingLeft="20dip"
-                android:paddingRight="20dip" />
-
-        <TextView android:id="@+id/increasing_ring_ringtone_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/increasing_ring_ring_volume_title"
-                android:paddingTop="10dip"
-                android:paddingLeft="20dip"
-                android:paddingRight="20dip" />
-
-        <SeekBar android:id="@+id/ringtone_seekbar"
-                android:focusable="false"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="2dip"

@@ -1385,7 +1385,6 @@
     <string name="checkbox_increasing_ring">Aktivieren</string>
     <!-- Sound settings screen, the title of the volume bar to adjust the minimum increasing ring volume -->
     <string name="increasing_ring_min_volume_title">Anfangslautstärke</string>
-    <string name="increasing_ring_ring_volume_title">Momentane Klingeltonlautstärke</string>
     <string name="increasing_ring_volume_notice">Hinweis:\nDa die Startlautstärke größer als die Klingeltonlautstärke ist, wird der Klingelton mit der Klingeltonlautstärke abgespielt.</string>
     <string name="increasing_ring_interval_title">Erhöhungs-Intervall</string>
     <string name="increasing_ring_interval_eachring">Bei jedem Klingelton</string>

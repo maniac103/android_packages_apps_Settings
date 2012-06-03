@@ -39,12 +39,9 @@ public class IncreasingRingPreference extends VolumePreference implements
 
     private CheckBox mEnabledCheckbox;
 
-    private TextView mRingVolumeTitle;
-    private SeekBar mRingVolumeSeekBar;
-    private TextView mRingVolumeNotice;
-
     private TextView mMinVolumeTitle;
     private SeekBar mMinVolumeSeekBar;
+    private TextView mRingVolumeNotice;
 
     private TextView mIntervalTitle;
     private Spinner mInterval;
@@ -65,18 +62,10 @@ public class IncreasingRingPreference extends VolumePreference implements
 
         ContentResolver cr = getContext().getContentResolver();
 
-        mRingVolumeTitle = (TextView) view.findViewById(R.id.increasing_ring_ringtone_title);
-        mRingVolumeNotice = (TextView) view.findViewById(R.id.increasing_ring_volume_notice);
-        mRingVolumeSeekBar = (SeekBar) view.findViewById(R.id.ringtone_seekbar);
-        mRingVolumeSeekBar.setOnTouchListener(new View.OnTouchListener() {
-            public boolean onTouch(View v, MotionEvent event) {
-                return true;
-            }
-        });
-
         mEnabledCheckbox = (CheckBox) view.findViewById(R.id.increasing_ring);
         mMinVolumeTitle = (TextView) view.findViewById(R.id.increasing_ring_min_volume_title);
         mMinVolumeSeekBar = (SeekBar) view.findViewById(com.android.internal.R.id.seekbar);
+        mRingVolumeNotice = (TextView) view.findViewById(R.id.increasing_ring_volume_notice);
         mIntervalTitle = (TextView) view.findViewById(R.id.increasing_ring_interval_title);
         mInterval = (Spinner) view.findViewById(R.id.increasing_ring_interval);
         mIntervalValues = getContext().getResources().getIntArray(R.array.increasing_ring_interval_values);
@@ -97,8 +86,7 @@ public class IncreasingRingPreference extends VolumePreference implements
         mInterval.setSelection(index);
 
         AudioManager am = (AudioManager) getContext().getSystemService(Context.AUDIO_SERVICE);
-        mRingVolumeSeekBar.setMax(mMinVolumeSeekBar.getMax());
-        mRingVolumeSeekBar.setProgress(am.getStreamVolume(AudioManager.STREAM_RING));
+        mMinVolumeSeekBar.setSecondaryProgress(am.getStreamVolume(AudioManager.STREAM_RING));
 
         updateVolumeNoticeVisibility(mMinVolumeSeekBar.getProgress());
         updateEnabledStates();
@@ -136,7 +124,7 @@ public class IncreasingRingPreference extends VolumePreference implements
     }
 
     private void updateVolumeNoticeVisibility(int value) {
-        boolean visible = value > mRingVolumeSeekBar.getProgress();
+        boolean visible = value > mMinVolumeSeekBar.getSecondaryProgress();
         if (!mEnabledCheckbox.isChecked()) {
             visible = false;
         }
@@ -145,10 +133,9 @@ public class IncreasingRingPreference extends VolumePreference implements
 
     private void updateEnabledStates() {
         boolean enable = mEnabledCheckbox.isChecked();
-        mRingVolumeTitle.setEnabled(enable);
-        mRingVolumeSeekBar.setEnabled(enable);
         mMinVolumeTitle.setEnabled(enable);
         mMinVolumeSeekBar.setEnabled(enable);
+        mRingVolumeNotice.setEnabled(enable);
         mIntervalTitle.setEnabled(enable);
         mInterval.setEnabled(enable);
     }
