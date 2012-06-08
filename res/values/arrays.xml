@@ -532,6 +532,7 @@
 
     <string-array name="increasing_ring_interval_entries" translatable="false">
         <item>@string/increasing_ring_interval_eachring</item>
+        <item>@string/increasing_ring_interval_half_second</item>
         <item>@string/increasing_ring_interval_1second</item>
         <item>@string/increasing_ring_interval_2seconds</item>
         <item>@string/increasing_ring_interval_3seconds</item>
@@ -541,6 +542,7 @@
 
     <integer-array name="increasing_ring_interval_values">
         <item>0</item>
+        <item>500</item>
         <item>1000</item>
         <item>2000</item>
         <item>3000</item>
