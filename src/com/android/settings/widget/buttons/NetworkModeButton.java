@@ -208,7 +208,8 @@ public class NetworkModeButton extends WidgetButton {
     }
 
     public boolean isDisabled(Context context) {
-        return networkModeToState(context) == SettingsAppWidgetProvider.STATE_DISABLED;
+        updateStates(context);
+        return currentState == SettingsAppWidgetProvider.STATE_DISABLED;
     }
 
 }
