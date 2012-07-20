@@ -20,6 +20,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.BatteryManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.SystemProperties;
 import android.preference.ListPreference;
@@ -78,16 +79,11 @@ public class DevelopmentSettings extends PreferenceActivity
         mKillAppLongpressBack = (CheckBoxPreference) findPreference(KILL_APP_LONGPRESS_BACK);
 
         mRootAccess = (ListPreference) findPreference(ROOT_ACCESS_KEY);
-        mRootAccess.setOnPreferenceChangeListener(this);
-    }
-
-    private void removeRootOptions() {
-        // user builds don't get root
-        if (SystemProperties.getInt("ro.debuggable", 0) == 0) {
-            Preference allowRoot = findPreference(ROOT_ACCESS_KEY);
-            if (allowRoot != null) {
-                getPreferenceScreen().removePreference(allowRoot);
-            }
+        // user builds don't get root, and eng always gets root
+        if (SystemProperties.getInt("ro.debuggable", 0) == 0 || "eng".equals(Build.TYPE)) {
+            getPreferenceScreen().removePreference(mRootAccess);
+        } else {
+            mRootAccess.setOnPreferenceChangeListener(this);
         }
     }
 
