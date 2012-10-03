@@ -29,13 +29,6 @@
             android:persistent="false"
             android:disableDependentsState="true" />
 
-    <ListPreference
-            android:key="vibrate"
-            android:title="@string/vibrate_title"
-            android:summary="@string/vibrate_summary"
-            android:entries="@array/vibrate_entries"
-            android:entryValues="@array/vibrate_values" />
-
     <com.android.settings.RingerVolumePreference
             android:key="ring_volume"
             android:title="@string/all_volume_title"
@@ -61,6 +54,13 @@
             android:dialogTitle="@string/increasing_ring_title"
             android:persistent="false"
             android:streamType="ring" />
+
+    <ListPreference
+            android:key="vibrate"
+            android:title="@string/vibrate_title"
+            android:summary="@string/vibrate_summary"
+            android:entries="@array/vibrate_entries"
+            android:entryValues="@array/vibrate_values" />
 
     <PreferenceCategory
             android:title="@string/sound_category_notification_title"/>
